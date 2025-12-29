@@ -25,4 +25,4 @@ class Solution {
     }
 }
 //“We return head because the first node of the list never changes; only the internal next pointers are rearranged.”
-//t:O(n) & s:O(1)
+t:O(n) & s:O(1)
