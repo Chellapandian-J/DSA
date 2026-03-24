@@ -57,5 +57,21 @@ class Solution {
         return false;
     }
 }
+/* 
+leetcode link: https://leetcode.com/problems/last-day-where-you-can-still-cross/
+You are given two integers row and col and an array cells where cells[i] = [ri, ci] indicates that on the ith day, the cell on the rith row and cith column (1-indexed) will be flooded with water. You want to find the last day that you can still walk from the top to the bottom by only walking on land cells. You can start from any cell in the top row and end at any cell in the bottom row. You can only travel in the four cardinal directions (left, right, up, down). Return the last day where it is possible to walk from the top to the bottom by only walking on land cells.
+example 1:
+Input: row = 2, col = 2, cells = [[1,1],[2,1],[1,2],[2,2]]
+Output: 2
+example 2:
+Input: row = 2, col = 2, cells = [[1,1],[1,2],[2,1],[2,2]]
+Output: 1
+
+Constraints:
+2 <= row, col <= 2 * 10^4
+4 <= row * col <= 2 * 10^4
+cells.length == row * col
+cells[i].length == 2
 //t:O(R*C*log(R*C)) S:O(row × col)
 //it can solve optimal using union find method
+*/
