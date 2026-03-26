@@ -36,6 +36,16 @@ class GFG {
         ts.pollLast();
 
         System.out.println("After removing last " + ts);
+        
+        NavigableSet<Integer> set = new TreeSet<>();
+        set.add(10);
+        set.add(20);
+        set.add(30);
+
+        System.out.println(set.ceiling(15)); // Output: 20
+        System.out.println(set.lower(20));   // Output: 10
+        System.out.println(set.descendingSet()); // Output: [30, 20, 10]
+
     }
 }
 /*
@@ -44,4 +54,9 @@ Initial TreeSet [A, B, Geek, Geeks, For, Z]
 After removing element [A, Geek, Geeks, For, Z]
 After removing first [Geek, Geeks, For, Z]
 After removing last [Geek, Geeks, For]
+
+navigable set is a sorted set that provides methods to navigate through the elements based on their natural ordering or a specified comparator.
+It extends the SortedSet interface and provides additional methods for retrieving elements based on their position in the set, such as first(),
+last(), lower(), higher(), floor(), and ceiling(). NavigableSet is implemented by TreeSet in Java, which uses a Red-Black tree to maintain the
+sorted order of elements.
 */
