@@ -36,8 +36,8 @@ class Solution {
         return ans;
     }
 }
-//optimal solution
-class Solution {
+//optimal solution   
+class Solution 
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
         List<List<Integer>> ans=new ArrayList<>();
         if(root==null) return ans;

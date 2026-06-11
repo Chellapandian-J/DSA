@@ -1,0 +1,97 @@
+/*
+Definition for Node
+class Node {
+    int data;
+    Node left, right;
+
+    Node(int val) {
+        data = val;
+        left = right = null;
+    }
+}
+*/
+
+class Solution {
+    ArrayList<Integer> boundaryTraversal(Node root) {
+        ArrayList<Integer> result=new ArrayList<>();
+        if(root==null) return result;
+        if(!isleaf(root)) result.add(root.data);
+        addleft(root,result);
+        addleaf(root,result);
+        addright(root,result);
+        return result;
+    }
+    private boolean isleaf(Node root){
+        return root.left==null && root.right==null;
+    }
+    private void addleft(Node root,ArrayList<Integer> result){
+        Node curr=root.left;
+        while(curr!=null){
+            if(!isleaf(curr)){
+                result.add(curr.data);
+            }
+            if(curr.left!=null){
+                curr=curr.left;
+            }
+            else{
+                curr=curr.right;
+            }
+        }
+    }
+    private void addleaf(Node root,ArrayList<Integer> result){
+        if(root==null){
+            return;
+        }
+        if(isleaf(root)){
+            result.add(root.data);
+            return;
+        }
+        addleaf(root.left,result);
+        addleaf(root.right,result);
+    }
+    private void addright(Node root,ArrayList<Integer> result){
+        Node curr=root.right;
+        ArrayList<Integer> temp=new ArrayList<>();
+        while(curr!=null){
+            if(!isleaf(curr)){
+                temp.add(curr.data);
+            }
+            if(curr.right!=null){
+                curr=curr.right;
+            }
+            else{
+                curr=curr.left;
+            }
+        }
+        for(int i=temp.size()-1;i>=0;i--){
+            result.add(temp.get(i));
+        }
+    }
+}
+/*Given a binary tree, return the boundary traversal of the binary tree in an anti-clockwise direction starting from the root. The boundary includes left boundary, leaves, and right boundary in order without duplicate nodes.
+The left boundary is the set of nodes defined by the path from the root to the left-most node. The right boundary is the set of nodes defined by the path from the root to the right-most node. If the root doesn't have left subtree or right subtree, then the root itself is left boundary or right boundary. Note that the left-most node is not a leaf node.
+The right-most node is not a leaf node.
+
+Example 1:
+Input:
+        1
+      /   \
+     2     3
+    / \   / \
+   4   5 6   7
+Output: 1 2 4 5 6 7 3
+
+Example 2:
+Input:
+        1
+      /   \
+     2     3
+    / \   / \
+   4   5 6   8
+      / \     \
+     9   7     10
+Output: 1 2 4 9 7 6 10 8 3
+
+time complexity: O(N)
+space complexity: O(H) H-height of tree
+*/
