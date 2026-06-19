@@ -44,6 +44,22 @@ class Solution {
         return freq.isEmpty();
     }
 }
+//or
+class Solution {
+    public boolean isAnagram(String s, String t) {
+        if(s.codePointCount(0,s.length())!=t.codePointCount(0,t.length())) return false;
+        Map<Integer,Integer> freq=new HashMap<>();
+        s.codePoints().forEach(cp->freq.put(cp,freq.getOrDefault(cp,0)+1));
+        for(int cp:t.codePoints().toArray()){
+            if(!freq.containsKey(cp)){
+                return false;
+            }
+            freq.put(cp,freq.get(cp)-1);
+            if(freq.get(cp)==0)freq.remove(cp);
+        }
+        return freq.isEmpty();
+    }
+}
 
 /*| Aspect            | Sorting      | Frequency Array | Unicode HashMap |
 | ----------------- | ------------ | --------------- | --------------- |
